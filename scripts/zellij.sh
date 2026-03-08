@@ -20,40 +20,52 @@ copy_on_select true
 
 // Simplified UI
 simplified_ui true
+
+// Keybindings
+keybinds {
+    shared {
+        // Ctrl+g → open lazygit in a fullscreen floating pane
+        bind "Ctrl g" {
+            Run "lazygit" {
+                direction "Down"
+            }
+        }
+    }
+}
 ZELLIJ_CFG
 else
     warn "Zellij config already exists, skipping"
 fi
 
 if [[ ! -f "$ZELLIJ_DIR/layouts/dev.kdl" ]]; then
-    info "Writing Zellij dev layout (yazelix-style)"
+    info "Writing Zellij dev layout (VS Code-style)"
     cat > "$ZELLIJ_DIR/layouts/dev.kdl" << 'ZELLIJ_LAYOUT'
-// Dev layout: file sidebar + editor + terminal
+// VS Code-style layout: sidebar + editor + bottom terminal
 layout {
-    // Top bar
+    // Top tab bar
     pane size=1 borderless=true {
         plugin location="tab-bar"
     }
 
     pane split_direction="vertical" {
-        // File sidebar (yazi)
-        pane size="20%" {
+        // Left sidebar — file browser
+        pane size="25%" {
             command "yazi"
         }
-        // Main editing area
+        // Right main area — editor on top, terminal on bottom
         pane split_direction="horizontal" {
-            // Editor (large)
-            pane size="75%" {
+            // Editor
+            pane size="70%" {
                 command "hx"
                 args "."
                 focus true
             }
-            // Terminal below editor
-            pane size="25%"
+            // Bottom terminal
+            pane size="30%"
         }
     }
 
-    // Status bar
+    // Bottom status bar
     pane size=1 borderless=true {
         plugin location="status-bar"
     }
