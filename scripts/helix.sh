@@ -31,6 +31,10 @@ select = "underline"
 display-messages = true
 display-inlay-hints = true
 
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "error"
+
 [editor.statusline]
 left = ["mode", "spinner", "file-name", "file-modification-indicator"]
 center = ["diagnostics"]
