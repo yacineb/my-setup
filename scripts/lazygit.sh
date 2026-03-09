@@ -28,6 +28,12 @@ git:
     showGraph: always
 os:
   editPreset: "helix"
+customCommands:
+  - key: "C"
+    context: "files"
+    command: "gitmoji -c"
+    subprocess: true
+    description: "Commit with gitmoji"
 LAZYGIT_CFG
 else
     warn "Lazygit config already exists, skipping"
