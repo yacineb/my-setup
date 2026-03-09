@@ -23,6 +23,7 @@ FORMULAE=(
     fd
     bat
     git-delta
+    gitmoji
     fzf
     jq
     tokei      # code statistics
