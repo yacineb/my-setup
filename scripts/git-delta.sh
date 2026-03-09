@@ -14,3 +14,5 @@ if ! git config --global core.pager &>/dev/null; then
 else
     warn "Git pager already configured, skipping delta setup"
 fi
+
+git config --global core.pager delta
