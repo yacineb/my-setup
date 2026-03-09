@@ -33,15 +33,15 @@ format = "[$symbol$branch]($style) "
 format = '([$all_status$ahead_behind]($style) )'
 
 [rust]
-symbol = " "
+symbol = "🦀 "
 format = "[$symbol($version)]($style) "
 
 [python]
-symbol = " "
+symbol = "🐍 "
 format = "[$symbol($version)]($style) "
 
 [nodejs]
-symbol = " "
+symbol = "🟢 "
 format = "[$symbol($version)]($style) "
 
 [cmd_duration]
