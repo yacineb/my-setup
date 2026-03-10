@@ -27,7 +27,10 @@ git:
   log:
     showGraph: always
 os:
-  editPreset: "helix"
+  edit: "hx -- {{filename}}"
+  editAtLine: "hx -- {{filename}}:{{line}}"
+  editAtLineAndWait: "hx -- {{filename}}:{{line}}"
+  openDirInEditor: "hx -- {{dir}}"
 customCommands:
   - key: "C"
     context: "files"

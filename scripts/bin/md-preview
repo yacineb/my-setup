@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Preview markdown with glow — works inside zellij or standalone
+if [ -n "$ZELLIJ" ]; then
+    zellij run --direction right -- glow "$1"
+else
+    open -a Ghostty --args -e bash -c "glow '$1'; read -n1"
+fi

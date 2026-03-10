@@ -62,6 +62,10 @@ L = ":buffer-next"
 C-w = ":buffer-close"
 # Open file picker with leader
 # (Space+f is already default in helix)
+
+[keys.normal.space]
+# Markdown preview with glow in a zellij pane
+m = ":sh md-preview %{buffer_name}"
 HELIX_CFG
 else
     warn "Helix config already exists, skipping"
@@ -77,7 +81,6 @@ auto-format = true
 
 [language-server.rust-analyzer.config]
 check.command = "clippy"
-cargo.features = "all"
 
 # Python — uses ruff + pyright
 [[language]]
