@@ -16,3 +16,16 @@ else
 fi
 
 git config --global core.pager delta
+
+# Configure ec as merge tool (terminal 3-way merge, IntelliJ-style)
+header "Configuring merge tool (ec)"
+
+if ! git config --global merge.tool &>/dev/null; then
+    info "Setting ec as merge tool"
+    git config --global merge.tool "ec"
+    git config --global mergetool.keepBackup false
+    git config --global mergetool.ec.cmd 'ec "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+    git config --global mergetool.ec.trustExitCode true
+else
+    warn "Merge tool already configured, skipping"
+fi

@@ -23,6 +23,7 @@ FORMULAE=(
     fd
     bat
     git-delta
+    chojs23/tap/ec  # terminal 3-way merge tool
     gitmoji
     fzf
     jq
