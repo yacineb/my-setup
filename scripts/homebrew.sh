@@ -24,6 +24,7 @@ FORMULAE=(
     bat
     git-delta
     chojs23/tap/ec  # terminal 3-way merge tool
+    nb             # CLI note-taking, bookmarking, archiving
     gitmoji
     fzf
     jq
