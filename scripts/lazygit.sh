@@ -35,8 +35,13 @@ customCommands:
   - key: "C"
     context: "files"
     command: "gitmoji -c"
-    subprocess: true
     description: "Commit with gitmoji"
+    output: terminal
+  - key: "M"
+    context: "files"
+    command: "git mergetool --no-prompt -- {{.SelectedFile.Name}}"
+    description: "Resolve conflicts with ec"
+    output: terminal
 LAZYGIT_CFG
 else
     warn "Lazygit config already exists, skipping"
