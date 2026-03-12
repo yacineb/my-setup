@@ -35,6 +35,9 @@ alias gl="git log --oneline -20"
 export EDITOR="hx"
 export VISUAL="hx"
 
+# krew (kubectl plugin manager)
+export PATH="\${KREW_ROOT:-\$HOME/.krew}/bin:\$PATH"
+
 # Yazi: cd to directory on exit (Ctrl+Q)
 function ya() {
     local tmp="\$(mktemp -t "yazi-cwd.XXXXXX")"

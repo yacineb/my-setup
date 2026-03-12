@@ -29,6 +29,7 @@ FORMULAE=(
     fzf
     jq
     tokei      # code statistics
+    ast-grep   # structural search/replace using AST patterns
 )
 
 CASKS=(

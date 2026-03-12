@@ -22,6 +22,7 @@ source "$SCRIPT_DIR/scripts/starship.sh"
 source "$SCRIPT_DIR/scripts/git-delta.sh"
 source "$SCRIPT_DIR/scripts/shell.sh"
 source "$SCRIPT_DIR/scripts/lsp-servers.sh"
+source "$SCRIPT_DIR/scripts/infra-tools.sh"
 
 # Done
 header "Setup complete"
