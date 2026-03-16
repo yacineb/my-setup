@@ -74,10 +74,16 @@ fi
 if [[ ! -f "$HELIX_DIR/languages.toml" ]]; then
     info "Writing Helix languages config"
     cat > "$HELIX_DIR/languages.toml" << 'HELIX_LANG'
+# Codeium via helix-gpt — inline completions
+[language-server.gpt]
+command = "helix-gpt"
+args = ["--handler", "codeium"]
+
 # Rust — uses rust-analyzer (install via rustup component add rust-analyzer)
 [[language]]
 name = "rust"
 auto-format = true
+language-servers = ["rust-analyzer", "gpt"]
 
 [language-server.rust-analyzer.config]
 check.command = "clippy"
@@ -86,7 +92,7 @@ check.command = "clippy"
 [[language]]
 name = "python"
 auto-format = true
-language-servers = ["ruff", "pyright"]
+language-servers = ["ruff", "pyright", "gpt"]
 
 [language-server.ruff]
 command = "ruff"
@@ -100,27 +106,30 @@ args = ["--stdio"]
 [[language]]
 name = "typescript"
 auto-format = true
-language-servers = ["typescript-language-server"]
+language-servers = ["typescript-language-server", "gpt"]
 
 [[language]]
 name = "tsx"
 auto-format = true
-language-servers = ["typescript-language-server"]
+language-servers = ["typescript-language-server", "gpt"]
 
 # TOML
 [[language]]
 name = "toml"
 auto-format = true
+language-servers = ["gpt"]
 
 # YAML
 [[language]]
 name = "yaml"
 auto-format = true
+language-servers = ["gpt"]
 
 # Bash
 [[language]]
 name = "bash"
 auto-format = true
+language-servers = ["gpt"]
 HELIX_LANG
 else
     warn "Helix languages config already exists, skipping"

@@ -99,8 +99,37 @@ Helix has **built-in LSP support** — no plugins, no extensions, no fiddling. I
 | Python | `ruff` + `pyright` |
 | TypeScript/TSX | `typescript-language-server` |
 | TOML/YAML/Bash | Built-in support with auto-format |
+| All languages | `helix-gpt` (Codeium AI completions) |
 
 No `mason.nvim`, no `lspconfig`, no `coc.nvim` — just a clean `languages.toml` and you're done.
+
+### Codeium AI completions (helix-gpt)
+
+All languages get AI-powered code completions via [helix-gpt](https://github.com/leona/helix-gpt) with the Codeium backend.
+
+**First-time auth setup:**
+
+1. Run the auth script:
+   ```bash
+   ./scripts/bin/codeium-auth
+   # Or with bun: bun ~/.local/bin/helix-gpt.js --authCodeium
+   ```
+2. Open the URL it prints in your browser and log in to Codeium
+3. Copy the token shown on the page and paste it into the **terminal prompt** (not `.zshrc`)
+4. The script prints your **real API key** — save that:
+   ```bash
+   echo 'export CODEIUM_API_KEY="<the-key-from-step-3>"' >> ~/.zshrc
+   source ~/.zshrc
+   ```
+
+> **Note:** The token from the Codeium website (`ott$...`) is a one-time token, not the API key. The auth script exchanges it for the real key. These tokens expire in seconds, so paste it quickly.
+
+**Usage in Helix:**
+- Completions trigger automatically on `{`, `(`, or space
+- `Ctrl+x` in insert mode to trigger manually
+- A "Fetching completion..." diagnostic appears while loading
+
+> **Note:** helix-gpt runs on Node.js instead of Bun due to a Bun stdin bug when spawned as a subprocess. The wrapper at `~/.local/bin/helix-gpt` handles this automatically.
 
 ## Customization
 

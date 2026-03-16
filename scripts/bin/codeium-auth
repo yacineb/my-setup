@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+import { randomBytes } from "crypto";
+import { createInterface } from "readline";
+
+const sessionId = [4,2,2,2,6].map(n => randomBytes(n).toString("hex")).join("-");
+const url = `https://codeium.com/profile?response_type=token&redirect_uri=vim-show-auth-token&state=${sessionId}&scope=openid%20profile%20email&redirect_parameters_type=query`;
+
+console.log(`\n1. Open this URL in your browser:\n\n   ${url}\n`);
+console.log(`2. Log in and copy the token shown on the page.\n`);
+
+const rl = createInterface({ input: process.stdin, output: process.stdout });
+rl.question("3. Paste the token here: ", async (token) => {
+  rl.close();
+  try {
+    const res = await fetch("https://api.codeium.com/register_user/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ firebase_id_token: token.trim() })
+    });
+    const data = await res.json();
+    if (data.api_key) {
+      console.log(`\nYour Codeium API key:\n\n   ${data.api_key}\n`);
+      console.log(`Add it to your shell profile:\n\n   echo 'export CODEIUM_API_KEY="${data.api_key}"' >> ~/.zshrc\n`);
+    } else {
+      console.error("\nError:", JSON.stringify(data));
+    }
+  } catch (e) {
+    console.error("\nError:", e.message);
+  }
+});
