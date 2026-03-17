@@ -29,3 +29,12 @@ if ! git config --global merge.tool &>/dev/null; then
 else
     warn "Merge tool already configured, skipping"
 fi
+
+# Git worktree aliases
+header "Configuring git worktree aliases"
+
+git config --global alias.wta "worktree add"
+git config --global alias.wtl "worktree list"
+git config --global alias.wtr "worktree remove"
+git config --global alias.wtp "worktree prune"
+git config --global alias.wtn '!f() { git worktree add -b "$1" "../$1" main; }; f'
