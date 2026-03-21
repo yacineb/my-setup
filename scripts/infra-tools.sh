@@ -31,6 +31,14 @@ KREW_PLUGINS=(
     who-can             # reverse RBAC lookup for security audits
 )
 
+# --- lazydocker: TUI for Docker containers and images ---
+if command -v lazydocker &>/dev/null; then
+    warn "lazydocker already installed ($(lazydocker --version 2>/dev/null | head -1 || echo 'unknown'))"
+else
+    info "Installing lazydocker"
+    brew install lazydocker
+fi
+
 for plugin in "${KREW_PLUGINS[@]}"; do
     if kubectl krew list 2>/dev/null | grep -q "^${plugin}$"; then
         warn "kubectl plugin '${plugin}' already installed"
