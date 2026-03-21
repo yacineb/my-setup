@@ -10,7 +10,7 @@ if [[ ! -f "$GHOSTTY_DIR/config" ]]; then
     info "Writing Ghostty config"
     cat > "$GHOSTTY_DIR/config" << 'GHOSTTY'
 # Font
-font-family = JetBrains Mono
+font-family = JetBrainsMono Nerd Font
 font-size = 14
 
 # Theme — clean dark
