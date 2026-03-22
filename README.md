@@ -20,6 +20,7 @@ For pure nerds — a 360° dev experience in pure terminal. No Electron, no GUI,
 | **bat** | Cat with syntax highlighting | `cat` |
 | **delta** | Better git diffs | default diff |
 | **ec** | Terminal 3-way merge tool | opendiff / VS Code merge |
+| **duf** | Disk usage/free utility | `df` |
 | **nb** | CLI note-taking & bookmarking | Notion / Obsidian |
 
 ## Quick Start

@@ -30,6 +30,7 @@ FORMULAE=(
     jq
     tokei      # code statistics
     ast-grep   # structural search/replace using AST patterns
+    duf        # better df — disk usage/free with a clean TUI
 )
 
 CASKS=(
